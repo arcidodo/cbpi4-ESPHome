@@ -148,6 +148,9 @@ class ESPHomeConnectionManager:
 ])
 class ESPHomeSensor(CBPiSensor):
 
+    # Default value: CBPi can call get_state() before on_start() has run.
+    value = 0
+
     async def on_start(self):
         self.value = 0
         host = (self.props.get("Host") or "").strip()
